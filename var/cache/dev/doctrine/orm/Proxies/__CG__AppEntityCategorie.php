@@ -64,10 +64,10 @@ class Categorie extends \App\Entity\Categorie implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'libCategorie', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'Detail', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'details', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'Produits', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'NouvCommFournisseur'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'produits'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'libCategorie', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'Detail', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'details', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'Produits', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'NouvCommFournisseur'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'libelle', '' . "\0" . 'App\\Entity\\Categorie' . "\0" . 'produits'];
     }
 
     /**
@@ -191,78 +191,23 @@ class Categorie extends \App\Entity\Categorie implements \Doctrine\ORM\Proxy\Pro
     /**
      * {@inheritDoc}
      */
-    public function getLibCategorie(): ?string
+    public function getLibelle(): ?string
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLibCategorie', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLibelle', []);
 
-        return parent::getLibCategorie();
+        return parent::getLibelle();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setLibCategorie(string $libCategorie): \App\Entity\Categorie
+    public function setLibelle(string $libelle): \App\Entity\Categorie
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLibCategorie', [$libCategorie]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLibelle', [$libelle]);
 
-        return parent::setLibCategorie($libCategorie);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getDetail(): ?string
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDetail', []);
-
-        return parent::getDetail();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setDetail(string $Detail): \App\Entity\Categorie
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDetail', [$Detail]);
-
-        return parent::setDetail($Detail);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getDetails(): \Doctrine\Common\Collections\Collection
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDetails', []);
-
-        return parent::getDetails();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function addDetail(\App\Entity\Detail $detail): \App\Entity\Categorie
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addDetail', [$detail]);
-
-        return parent::addDetail($detail);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function removeDetail(\App\Entity\Detail $detail): \App\Entity\Categorie
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeDetail', [$detail]);
-
-        return parent::removeDetail($detail);
+        return parent::setLibelle($libelle);
     }
 
     /**
@@ -279,7 +224,7 @@ class Categorie extends \App\Entity\Categorie implements \Doctrine\ORM\Proxy\Pro
     /**
      * {@inheritDoc}
      */
-    public function addProduit(\App\Entity\Produits $produit): \App\Entity\Categorie
+    public function addProduit(\App\Entity\Produit $produit): \App\Entity\Categorie
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProduit', [$produit]);
@@ -290,45 +235,12 @@ class Categorie extends \App\Entity\Categorie implements \Doctrine\ORM\Proxy\Pro
     /**
      * {@inheritDoc}
      */
-    public function removeProduit(\App\Entity\Produits $produit): \App\Entity\Categorie
+    public function removeProduit(\App\Entity\Produit $produit): \App\Entity\Categorie
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProduit', [$produit]);
 
         return parent::removeProduit($produit);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getNouvCommFournisseur(): \Doctrine\Common\Collections\Collection
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNouvCommFournisseur', []);
-
-        return parent::getNouvCommFournisseur();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function addNouvCommFournisseur(\App\Entity\NouvCommFournisseur $nouvCommFournisseur): \App\Entity\Categorie
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addNouvCommFournisseur', [$nouvCommFournisseur]);
-
-        return parent::addNouvCommFournisseur($nouvCommFournisseur);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function removeNouvCommFournisseur(\App\Entity\NouvCommFournisseur $nouvCommFournisseur): \App\Entity\Categorie
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeNouvCommFournisseur', [$nouvCommFournisseur]);
-
-        return parent::removeNouvCommFournisseur($nouvCommFournisseur);
     }
 
 }

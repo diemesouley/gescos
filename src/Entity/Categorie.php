@@ -21,33 +21,16 @@ class Categorie
     /**
      * @ORM\Column(type="string", length=25)
      */
-    private $libCategorie;
+    private $libelle;
 
     /**
-     * @ORM\Column(type="string", length=25)
+     * @ORM\OneToMany(targetEntity="App\Entity\Produit", mappedBy="id_categorie")
      */
-    private $Detail;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Detail", mappedBy="Categorie")
-     */
-    private $details;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Produits", mappedBy="categorie")
-     */
-    private $Produits;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\NouvCommFournisseur", mappedBy="categorie")
-     */
-    private $NouvCommFournisseur;
+    private $produits;
 
     public function __construct()
     {
-        $this->details = new ArrayCollection();
-        $this->Produits = new ArrayCollection();
-        $this->NouvCommFournisseur = new ArrayCollection();
+        $this->produits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -55,117 +38,43 @@ class Categorie
         return $this->id;
     }
 
-    public function getLibCategorie(): ?string
+    public function getLibelle(): ?string
     {
-        return $this->libCategorie;
+        return $this->libelle;
     }
 
-    public function setLibCategorie(string $libCategorie): self
+    public function setLibelle(string $libelle): self
     {
-        $this->libCategorie = $libCategorie;
-
-        return $this;
-    }
-
-    public function getDetail(): ?string
-    {
-        return $this->Detail;
-    }
-
-    public function setDetail(string $Detail): self
-    {
-        $this->Detail = $Detail;
+        $this->libelle = $libelle;
 
         return $this;
     }
 
     /**
-     * @return Collection|Detail[]
-     */
-    public function getDetails(): Collection
-    {
-        return $this->details;
-    }
-
-    public function addDetail(Detail $detail): self
-    {
-        if (!$this->details->contains($detail)) {
-            $this->details[] = $detail;
-            $detail->setCategorie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDetail(Detail $detail): self
-    {
-        if ($this->details->contains($detail)) {
-            $this->details->removeElement($detail);
-            // set the owning side to null (unless already changed)
-            if ($detail->getCategorie() === $this) {
-                $detail->setCategorie(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Produits[]
+     * @return Collection|Produit[]
      */
     public function getProduits(): Collection
     {
-        return $this->Produits;
+        return $this->produits;
     }
 
-    public function addProduit(Produits $produit): self
+    public function addProduit(Produit $produit): self
     {
-        if (!$this->Produits->contains($produit)) {
-            $this->Produits[] = $produit;
-            $produit->setCategorie($this);
+        if (!$this->produits->contains($produit)) {
+            $this->produits[] = $produit;
+            $produit->setIdCategorie($this);
         }
 
         return $this;
     }
 
-    public function removeProduit(Produits $produit): self
+    public function removeProduit(Produit $produit): self
     {
-        if ($this->Produits->contains($produit)) {
-            $this->Produits->removeElement($produit);
+        if ($this->produits->contains($produit)) {
+            $this->produits->removeElement($produit);
             // set the owning side to null (unless already changed)
-            if ($produit->getCategorie() === $this) {
-                $produit->setCategorie(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|NouvCommFournisseur[]
-     */
-    public function getNouvCommFournisseur(): Collection
-    {
-        return $this->NouvCommFournisseur;
-    }
-
-    public function addNouvCommFournisseur(NouvCommFournisseur $nouvCommFournisseur): self
-    {
-        if (!$this->NouvCommFournisseur->contains($nouvCommFournisseur)) {
-            $this->NouvCommFournisseur[] = $nouvCommFournisseur;
-            $nouvCommFournisseur->setCategorie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNouvCommFournisseur(NouvCommFournisseur $nouvCommFournisseur): self
-    {
-        if ($this->NouvCommFournisseur->contains($nouvCommFournisseur)) {
-            $this->NouvCommFournisseur->removeElement($nouvCommFournisseur);
-            // set the owning side to null (unless already changed)
-            if ($nouvCommFournisseur->getCategorie() === $this) {
-                $nouvCommFournisseur->setCategorie(null);
+            if ($produit->getIdCategorie() === $this) {
+                $produit->setIdCategorie(null);
             }
         }
 

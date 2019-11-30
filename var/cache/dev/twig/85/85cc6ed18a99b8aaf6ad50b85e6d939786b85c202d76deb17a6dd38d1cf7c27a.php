@@ -62,10 +62,10 @@ class __TwigTemplate_04d5a2ac5eee1584a8e6308c08bb143d7aa9b6682d50e4f78538943d578
         // line 6
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formCategorie"]) || array_key_exists("formCategorie", $context) ? $context["formCategorie"] : (function () { throw new RuntimeError('Variable "formCategorie" does not exist.', 6, $this->source); })()), 'form_start');
         echo "
-        <div class=\"form-group\">
+        
         <form_widget(formCategorie)>
         <form_widget(formCategorie.Detail)>
-        </div>
+        
     ";
         // line 11
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formCategorie"]) || array_key_exists("formCategorie", $context) ? $context["formCategorie"] : (function () { throw new RuntimeError('Variable "formCategorie" does not exist.', 11, $this->source); })()), 'form_end');
@@ -100,10 +100,10 @@ class __TwigTemplate_04d5a2ac5eee1584a8e6308c08bb143d7aa9b6682d50e4f78538943d578
     <h1>Creation d'une Catégorie ! <h1>
 
     {{ form_start(formCategorie) }}
-        <div class=\"form-group\">
+        
         <form_widget(formCategorie)>
         <form_widget(formCategorie.Detail)>
-        </div>
+        
     {{ form_end(formCategorie) }}
     <button Type=\"submit\" class=\"btn btn-success\">Ajouter un Catégorie</button>
 {% endblock %} ", "ges_cos/create.html.twig", "/home/souleymane/Bureau/GesCos/templates/ges_cos/create.html.twig");

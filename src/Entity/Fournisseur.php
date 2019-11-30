@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,24 +27,14 @@ class Fournisseur
     private $adresseFournisseur;
 
     /**
-     * @ORM\Column(type="string", length=25, nullable=true)
+     * @ORM\Column(type="string", length=50)
      */
     private $emailFournisseur;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $telFournisseur;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\LigneProduit", mappedBy="fournisseur")
-     */
-    private $LigneProduit;
-
-    public function __construct()
-    {
-        $this->LigneProduit = new ArrayCollection();
-    }
+    private $telephoneFournisseur;
 
     public function getId(): ?int
     {
@@ -82,52 +70,21 @@ class Fournisseur
         return $this->emailFournisseur;
     }
 
-    public function setEmailFournisseur(?string $emailFournisseur): self
+    public function setEmailFournisseur(string $emailFournisseur): self
     {
         $this->emailFournisseur = $emailFournisseur;
 
         return $this;
     }
 
-    public function getTelFournisseur(): ?int
+    public function getTelephoneFournisseur(): ?int
     {
-        return $this->telFournisseur;
+        return $this->telephoneFournisseur;
     }
 
-    public function setTelFournisseur(int $telFournisseur): self
+    public function setTelephoneFournisseur(int $telephoneFournisseur): self
     {
-        $this->telFournisseur = $telFournisseur;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|LigneProduit[]
-     */
-    public function getLigneProduit(): Collection
-    {
-        return $this->LigneProduit;
-    }
-
-    public function addLigneProduit(LigneProduit $ligneProduit): self
-    {
-        if (!$this->LigneProduit->contains($ligneProduit)) {
-            $this->LigneProduit[] = $ligneProduit;
-            $ligneProduit->setFournisseur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLigneProduit(LigneProduit $ligneProduit): self
-    {
-        if ($this->LigneProduit->contains($ligneProduit)) {
-            $this->LigneProduit->removeElement($ligneProduit);
-            // set the owning side to null (unless already changed)
-            if ($ligneProduit->getFournisseur() === $this) {
-                $ligneProduit->setFournisseur(null);
-            }
-        }
+        $this->telephoneFournisseur = $telephoneFournisseur;
 
         return $this;
     }

@@ -19,43 +19,42 @@ class Commande
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="integer")
+     */
+    private $numCommande;
+
+    /**
+     * @ORM\Column(type="date")
      */
     private $dateCommande;
 
     /**
-     * @ORM\Column(type="string", length=15)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $etatCommande;
+    private $observation;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="commandes")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $prixTotatlCommande;
+    private $id_client;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Clients", inversedBy="commandes")
-     */
-    private $Clients;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Facture", inversedBy="Commande")
-     */
-    private $facture;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\LigneSortie", mappedBy="commande")
-     */
-    private $LigneSortie;
-
-    public function __construct()
-    {
-        $this->LigneSortie = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getNumCommande(): ?int
+    {
+        return $this->numCommande;
+    }
+
+    public function setNumCommande(int $numCommande): self
+    {
+        $this->numCommande = $numCommande;
+
+        return $this;
     }
 
     public function getDateCommande(): ?\DateTimeInterface
@@ -70,82 +69,28 @@ class Commande
         return $this;
     }
 
-    public function getEtatCommande(): ?string
+    public function getObservation(): ?string
     {
-        return $this->etatCommande;
+        return $this->observation;
     }
 
-    public function setEtatCommande(string $etatCommande): self
+    public function setObservation(?string $observation): self
     {
-        $this->etatCommande = $etatCommande;
+        $this->observation = $observation;
 
         return $this;
     }
 
-    public function getPrixTotatlCommande(): ?float
+    public function getIdClient(): ?Client
     {
-        return $this->prixTotatlCommande;
+        return $this->id_client;
     }
 
-    public function setPrixTotatlCommande(float $prixTotatlCommande): self
+    public function setIdClient(?Client $id_client): self
     {
-        $this->prixTotatlCommande = $prixTotatlCommande;
+        $this->id_client = $id_client;
 
         return $this;
     }
 
-    public function getClients(): ?Clients
-    {
-        return $this->Clients;
-    }
-
-    public function setClients(?Clients $Clients): self
-    {
-        $this->Clients = $Clients;
-
-        return $this;
-    }
-
-    public function getFacture(): ?Facture
-    {
-        return $this->facture;
-    }
-
-    public function setFacture(?Facture $facture): self
-    {
-        $this->facture = $facture;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|LigneSortie[]
-     */
-    public function getLigneSortie(): Collection
-    {
-        return $this->LigneSortie;
-    }
-
-    public function addLigneSortie(LigneSortie $ligneSortie): self
-    {
-        if (!$this->LigneSortie->contains($ligneSortie)) {
-            $this->LigneSortie[] = $ligneSortie;
-            $ligneSortie->setCommande($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLigneSortie(LigneSortie $ligneSortie): self
-    {
-        if ($this->LigneSortie->contains($ligneSortie)) {
-            $this->LigneSortie->removeElement($ligneSortie);
-            // set the owning side to null (unless already changed)
-            if ($ligneSortie->getCommande() === $this) {
-                $ligneSortie->setCommande(null);
-            }
-        }
-
-        return $this;
-    }
 }

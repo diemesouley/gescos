@@ -62,9 +62,9 @@ class __TwigTemplate_b8fd4ca862f732203fdd1634c34251d19e27cd10be0fbcf26d1b3ce8cfc
         // line 6
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formFournisseur"]) || array_key_exists("formFournisseur", $context) ? $context["formFournisseur"] : (function () { throw new RuntimeError('Variable "formFournisseur" does not exist.', 6, $this->source); })()), 'form_start');
         echo "
-        <div class=\"form-group\">
+        
         <form_widget(formFournisseur)>
-        </div>
+        
     ";
         // line 10
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formFournisseur"]) || array_key_exists("formFournisseur", $context) ? $context["formFournisseur"] : (function () { throw new RuntimeError('Variable "formFournisseur" does not exist.', 10, $this->source); })()), 'form_end');
@@ -100,9 +100,9 @@ class __TwigTemplate_b8fd4ca862f732203fdd1634c34251d19e27cd10be0fbcf26d1b3ce8cfc
     <h1>Creation d'un Fournisseur ! <h1>
 
     {{ form_start(formFournisseur) }}
-        <div class=\"form-group\">
+        
         <form_widget(formFournisseur)>
-        </div>
+        
     {{ form_end(formFournisseur) }}
     <button Type=\"submit\" class=\"btn btn-success\">Ajouter un Fournisseur</button>
 

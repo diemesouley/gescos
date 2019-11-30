@@ -19,30 +19,13 @@ class Facture
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\OneToMany(targetEntity="App\Entity\LigneCommande", mappedBy="facture")
      */
-    private $dateFact;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="facture")
-     */
-    private $Commande;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Produits", mappedBy="facture")
-     */
-    private $Produits;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\LigneSortie", mappedBy="facture")
-     */
-    private $LigneSortie;
+    private $id_ligneCommande;
 
     public function __construct()
     {
-        $this->Commande = new ArrayCollection();
-        $this->Produits = new ArrayCollection();
-        $this->LigneSortie = new ArrayCollection();
+        $this->id_ligneCommande = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -50,105 +33,31 @@ class Facture
         return $this->id;
     }
 
-    public function getDateFact(): ?\DateTimeInterface
-    {
-        return $this->dateFact;
-    }
-
-    public function setDateFact(\DateTimeInterface $dateFact): self
-    {
-        $this->dateFact = $dateFact;
-
-        return $this;
-    }
-
     /**
-     * @return Collection|Commande[]
+     * @return Collection|LigneCommande[]
      */
-    public function getCommande(): Collection
+    public function getIdLigneCommande(): Collection
     {
-        return $this->Commande;
+        return $this->id_ligneCommande;
     }
 
-    public function addCommande(Commande $commande): self
+    public function addIdLigneCommande(LigneCommande $idLigneCommande): self
     {
-        if (!$this->Commande->contains($commande)) {
-            $this->Commande[] = $commande;
-            $commande->setFacture($this);
+        if (!$this->id_ligneCommande->contains($idLigneCommande)) {
+            $this->id_ligneCommande[] = $idLigneCommande;
+            $idLigneCommande->setFacture($this);
         }
 
         return $this;
     }
 
-    public function removeCommande(Commande $commande): self
+    public function removeIdLigneCommande(LigneCommande $idLigneCommande): self
     {
-        if ($this->Commande->contains($commande)) {
-            $this->Commande->removeElement($commande);
+        if ($this->id_ligneCommande->contains($idLigneCommande)) {
+            $this->id_ligneCommande->removeElement($idLigneCommande);
             // set the owning side to null (unless already changed)
-            if ($commande->getFacture() === $this) {
-                $commande->setFacture(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Produits[]
-     */
-    public function getProduits(): Collection
-    {
-        return $this->Produits;
-    }
-
-    public function addProduit(Produits $produit): self
-    {
-        if (!$this->Produits->contains($produit)) {
-            $this->Produits[] = $produit;
-            $produit->setFacture($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduit(Produits $produit): self
-    {
-        if ($this->Produits->contains($produit)) {
-            $this->Produits->removeElement($produit);
-            // set the owning side to null (unless already changed)
-            if ($produit->getFacture() === $this) {
-                $produit->setFacture(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|LigneSortie[]
-     */
-    public function getLigneSortie(): Collection
-    {
-        return $this->LigneSortie;
-    }
-
-    public function addLigneSortie(LigneSortie $ligneSortie): self
-    {
-        if (!$this->LigneSortie->contains($ligneSortie)) {
-            $this->LigneSortie[] = $ligneSortie;
-            $ligneSortie->setFacture($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLigneSortie(LigneSortie $ligneSortie): self
-    {
-        if ($this->LigneSortie->contains($ligneSortie)) {
-            $this->LigneSortie->removeElement($ligneSortie);
-            // set the owning side to null (unless already changed)
-            if ($ligneSortie->getFacture() === $this) {
-                $ligneSortie->setFacture(null);
+            if ($idLigneCommande->getFacture() === $this) {
+                $idLigneCommande->setFacture(null);
             }
         }
 

@@ -110,7 +110,7 @@ class __TwigTemplate_f7a32d82d2b322536394f3049fdd755e59677e6100898a17782bb995f4a
         ";
         // line 46
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 47
+        // line 51
         echo "    </body>
 </html>
 ";
@@ -163,6 +163,11 @@ class __TwigTemplate_f7a32d82d2b322536394f3049fdd755e59677e6100898a17782bb995f4a
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
+        // line 47
+        echo "        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>
+
+        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">
+        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -180,7 +185,7 @@ class __TwigTemplate_f7a32d82d2b322536394f3049fdd755e59677e6100898a17782bb995f4a
 
     public function getDebugInfo()
     {
-        return array (  160 => 46,  148 => 44,  136 => 7,  123 => 5,  114 => 47,  112 => 46,  109 => 45,  107 => 44,  94 => 34,  82 => 25,  76 => 22,  70 => 19,  57 => 8,  55 => 7,  50 => 5,  44 => 1,);
+        return array (  167 => 47,  160 => 46,  148 => 44,  136 => 7,  123 => 5,  114 => 51,  112 => 46,  109 => 45,  107 => 44,  94 => 34,  82 => 25,  76 => 22,  70 => 19,  57 => 8,  55 => 7,  50 => 5,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -230,7 +235,11 @@ class __TwigTemplate_f7a32d82d2b322536394f3049fdd755e59677e6100898a17782bb995f4a
         <div class=\"container\">
         {% block body %}{% endblock %}
         </div>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>
+
+        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">
+        {% endblock %}
     </body>
 </html>
 ", "base.html.twig", "/home/souleymane/Bureau/GesCos/templates/base.html.twig");
